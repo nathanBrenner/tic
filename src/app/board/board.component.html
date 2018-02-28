@@ -1,35 +1,36 @@
 <div>
-  <div className="board-row">
+  <div class="status">{{status}}</div>
+  <div class="board-row">
     <app-square
-      value="0"
+      [value]="0"
     ></app-square>
     <app-square
-      value="0"
+      [value]="1"
     ></app-square>
     <app-square
-      value="0"
-    ></app-square>
-  </div>
-  <div className="board-row">
-    <app-square
-      value="0"
-    ></app-square>
-    <app-square
-      value="0"
-    ></app-square>
-    <app-square
-      value="0"
+      [value]="2"
     ></app-square>
   </div>
-  <div className="board-row">
+  <div class="board-row">
     <app-square
-      value="0"
+      [value]="3"
     ></app-square>
     <app-square
-      value="0"
+      [value]="4"
     ></app-square>
     <app-square
-      value="0"
+      [value]="5"
+    ></app-square>
+  </div>
+  <div class="board-row">
+    <app-square
+      [value]="6"
+    ></app-square>
+    <app-square
+      [value]="7"
+    ></app-square>
+    <app-square
+      [value]="8"
     ></app-square>
   </div>
 </div>

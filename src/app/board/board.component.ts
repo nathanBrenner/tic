@@ -9,4 +9,6 @@ import { EventEmitter } from 'events';
 export class BoardComponent {
   @Input() value;
   @Output() onClick = new EventEmitter();
+
+  status = 'Next player: X';
 }
