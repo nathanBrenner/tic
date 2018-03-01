@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
   state;
   status;
+
   constructor() { }
 
   ngOnInit() {
@@ -21,12 +22,31 @@ export class GameComponent implements OnInit {
     this.status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
   }
 
+  calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
+
   handleClick(i) {
     let history = this.state.history.slice(0, this.state.stepNumber + 1);
     let current = history[this.state.stepNumber];
     const squares = current.squares.slice();
     let winner = this.calculateWinner(current.squares);
-    console.log({current, winner});
 
     if (this.calculateWinner(squares) || squares[i]) {
       return;
@@ -52,30 +72,6 @@ export class GameComponent implements OnInit {
     }
   }
 
-  calculateWinner(squares) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
-      }
-    }
-    return null;
-  }
-
-  setState(state) {
-    this.state = {...this.state, ...state};
-  }
-
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -83,5 +79,7 @@ export class GameComponent implements OnInit {
     });
   }
 
-
+  setState(state) {
+    this.state = {...this.state, ...state};
+  }
 }

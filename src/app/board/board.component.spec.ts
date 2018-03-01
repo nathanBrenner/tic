@@ -1,3 +1,4 @@
+import { SquareComponent } from './../square/square.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoardComponent } from './board.component';
@@ -8,7 +9,10 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
+      declarations: [
+        BoardComponent,
+        SquareComponent,
+      ]
     })
     .compileComponents();
   }));
@@ -16,6 +20,7 @@ describe('BoardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardComponent);
     component = fixture.componentInstance;
+    component.squares = [ null, null, null, null, null, null, null, null, null ];
     fixture.detectChanges();
   });
 

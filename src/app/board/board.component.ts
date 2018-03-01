@@ -1,4 +1,3 @@
-import { SquareComponent } from './../square/square.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,5 +8,4 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class BoardComponent {
   @Input() squares;
   @Output() onClick = new EventEmitter();
-
 }
