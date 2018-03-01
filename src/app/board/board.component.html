@@ -2,35 +2,44 @@
   <div class="status">{{status}}</div>
   <div class="board-row">
     <app-square
-      [value]="0"
+      [value]="state.squares[0]"
+      (onClick)="handleClick(0)"
     ></app-square>
     <app-square
-      [value]="1"
+      [value]="state.squares[1]"
+      (onClick)="handleClick(1)"
     ></app-square>
     <app-square
-      [value]="2"
-    ></app-square>
-  </div>
-  <div class="board-row">
-    <app-square
-      [value]="3"
-    ></app-square>
-    <app-square
-      [value]="4"
-    ></app-square>
-    <app-square
-      [value]="5"
+      [value]="state.squares[2]"
+      (onClick)="handleClick(2)"
     ></app-square>
   </div>
   <div class="board-row">
     <app-square
-      [value]="6"
+      [value]="state.squares[3]"
+      (onClick)="handleClick(3)"
     ></app-square>
     <app-square
-      [value]="7"
+      [value]="state.squares[4]"
+      (onClick)="handleClick(4)"
     ></app-square>
     <app-square
-      [value]="8"
+      [value]="state.squares[5]"
+      (onClick)="handleClick(5)"
+    ></app-square>
+  </div>
+  <div class="board-row">
+    <app-square
+      [value]="state.squares[6]"
+      (onClick)="handleClick(6)"
+    ></app-square>
+    <app-square
+      [value]="state.squares[7]"
+      (onClick)="handleClick(7)"
+    ></app-square>
+    <app-square
+      [value]="state.squares[8]"
+      (onClick)="handleClick(8)"
     ></app-square>
   </div>
 </div>

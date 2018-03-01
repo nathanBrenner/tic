@@ -5,22 +5,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
   templateUrl: './square.component.html',
   styleUrls: ['./square.component.css']
 })
-export class SquareComponent implements OnInit {
+export class SquareComponent {
   @Input() value;
-
-  state;
-
-  handleClick(value) {
-    this.setState({value: 'X'});
-  }
-
-  ngOnInit() {
-    this.state = {
-      value: null
-    }
-  }
-
-  setState(state) {
-    this.state = {...this.state, ...state};
-  }
+  @Output() onClick = new EventEmitter();
 }
