@@ -22,7 +22,10 @@ export class GameComponent implements OnInit {
     this.status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
   }
 
-  calculateWinner(squares) {
+  calculateWinner(squares: any[]): string|null {
+    // squares will be an array of 9 values, and each value will either be 'X', '0', or null
+
+    // lines represents the possible combination to win (3 boxes selected in a row)
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -33,13 +36,16 @@ export class GameComponent implements OnInit {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
+      // if the letter matches one of the selected combinations, return the letter
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
     }
     return null;
+
   }
 
   handleClick(i) {

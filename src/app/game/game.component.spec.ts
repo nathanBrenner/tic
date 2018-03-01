@@ -29,7 +29,20 @@ describe('GameComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('#calculateWinner', () => {});
+  it('#calculateWinner returns null because the player didn\'t win yet', () => {
+    const squares = Array(9).fill(null);
+    expect(component.calculateWinner(squares)).toBe(null);
+  });
+
+  it('#calculateWinner returns "X" because the player won', () => {
+    const squares = ['X', 'X', 'X', null, null, null, null, null, null];
+    expect(component.calculateWinner(squares)).toBe('X');
+  });
+
+  it('#calculateWinner returns "O" because the player won', () => {
+    const squares = ['X', 'O', 'X', 'X', 'O', null, null, 'O', null];
+    expect(component.calculateWinner(squares)).toBe('O');
+  });
 
   it('#handleClick');
 
