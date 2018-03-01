@@ -1,12 +1,16 @@
 <div class="game">
   <div class="game-board">
-    <app-board>
-    </app-board>
+    <app-board
+      [squares]="state.history[state.stepNumber].squares"
+      (onClick)="handleClick($event)"
+    ></app-board>
   </div>
   <div class="game-info">
-    <div>todo</div>
+    <div>{{status}}</div>
     <ol>
-      <li>todo</li>
+      <li *ngFor="let move of state.history; index as i">
+        <button (click)="jumpTo(i)">{{i ? 'Go to move #' + i : 'Go to game start'}}</button>
+      </li>
     </ol>
   </div>
 </div>

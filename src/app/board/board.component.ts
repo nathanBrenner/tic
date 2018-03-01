@@ -1,6 +1,5 @@
 import { SquareComponent } from './../square/square.component';
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -8,8 +7,9 @@ import { EventEmitter } from 'events';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  @Input() value;
+  @Input() squares;
   @Output() onClick = new EventEmitter();
+  @Output() foo = new EventEmitter();
   state;
   status;
 
