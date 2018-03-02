@@ -48,7 +48,8 @@ export class GameComponent implements OnInit {
 
   }
 
-  handleClick(i) {
+  handleClick(i: number): void {
+    // this needs to be broken up into smaller functions
     let history = this.state.history.slice(0, this.state.stepNumber + 1);
     let current = history[this.state.stepNumber];
     const squares = current.squares.slice();

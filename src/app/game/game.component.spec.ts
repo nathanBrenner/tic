@@ -44,7 +44,47 @@ describe('GameComponent', () => {
     expect(component.calculateWinner(squares)).toBe('O');
   });
 
-  it('#handleClick');
+  it('#handleClick', () => {
+    // this needs to be refactored: replace callThrough with returnValue
+    // because this is more like an integration test
+    // maybe it would be better to write additional tests that uses returnValue on the spies
+    const spy = spyOn(component, 'calculateWinner');
+    spyOn(component, 'setState').and.callThrough();
+    const i = 5;
+    expect(component.status).toBe('Next player: X');
+    component.state = {
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true,
+    }
+
+    const updatedState = {
+      history: [
+        {
+          squares: Array(9).fill(null),
+        },
+        {
+          squares: [ null, null, null, null, null, 'X', null, null, null ]
+        }
+      ],
+      stepNumber: 1,
+      xIsNext: false,
+    }
+
+    component.handleClick(i);
+
+    expect(component.state).toEqual(updatedState);
+
+    expect(spy.calls.count()).toEqual(3);
+    expect(spy.calls.argsFor(0)).toEqual([ [null, null, null, null, null, null, null, null, null ]]);
+    expect(spy.calls.argsFor(1)).toEqual([ [null, null, null, null, null, 'X', null, null, null ]]);
+    expect(spy.calls.argsFor(2)).toEqual([ [null, null, null, null, null, 'X', null, null, null ]]);
+    expect(component.status).toBe('Next player: O');
+  });
 
   it('#jumpTo');
 
