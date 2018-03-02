@@ -74,24 +74,16 @@ export class GameComponent implements OnInit {
 
     this.setState({
       history: history.concat([{
-        squares: squares,
+        squares,
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
 
-    history = this.state.history.slice(0, this.state.stepNumber + 1);
-    current = history[this.state.stepNumber];
-    winner = this.calculateWinner(current.squares);
-    if (winner) {
-      this.status = 'Winner: ' + winner;
-    } else {
-      this.status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
-    }
+    this.setStatus();
   }
 
   jumpTo(step: number): void {
-    debugger
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0,
@@ -100,5 +92,15 @@ export class GameComponent implements OnInit {
 
   setState(state: State): void {
     this.state = {...this.state, ...state};
+  }
+
+  setStatus(): void {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[this.state.stepNumber];
+    const winner = this.calculateWinner(current.squares);
+
+    this.status = winner
+    ? 'Winner: ' + winner
+    : `Next player: ${this.state.xIsNext ? 'X' : 'O'}`
   }
 }
