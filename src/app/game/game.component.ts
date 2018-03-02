@@ -5,9 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
+
 export class GameComponent implements OnInit {
   state;
-  status;
+  status: string;
 
   constructor() { }
 
@@ -79,14 +80,15 @@ export class GameComponent implements OnInit {
     }
   }
 
-  jumpTo(step) {
+  jumpTo(step: number): void {
+    debugger
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
   }
 
-  setState(state) {
+  setState(state): void {
     this.state = {...this.state, ...state};
   }
 }

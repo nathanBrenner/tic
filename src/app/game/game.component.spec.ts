@@ -86,7 +86,17 @@ describe('GameComponent', () => {
     expect(component.status).toBe('Next player: O');
   });
 
-  it('#jumpTo');
+  it('#jumpTo calls #setState', () => {
+    spyOn(component, 'setState');
+
+    component.jumpTo(2);
+
+    expect(component.setState).toHaveBeenCalledWith({
+      stepNumber: 2,
+      xIsNext: true
+    })
+
+  });
 
   it('#setState');
 
