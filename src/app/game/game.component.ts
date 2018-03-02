@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Squares {
+  squares: any[];
+}
+
+interface State {
+  history?: Squares[],
+  xIsNext?: boolean;
+  stepNumber?: number;
+}
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -7,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class GameComponent implements OnInit {
-  state;
+  state: State;
   status: string;
 
   constructor() { }
@@ -88,7 +98,7 @@ export class GameComponent implements OnInit {
     });
   }
 
-  setState(state): void {
+  setState(state: State): void {
     this.state = {...this.state, ...state};
   }
 }

@@ -94,10 +94,35 @@ describe('GameComponent', () => {
     expect(component.setState).toHaveBeenCalledWith({
       stepNumber: 2,
       xIsNext: true
-    })
+    });
 
   });
 
-  it('#setState');
+  it('#setState', () => {
+    const currentState = {
+      history: [
+        {
+          squares: [ null, null, null, null, null, null, null, null, null ]
+        }
+      ],
+      xIsNext: true,
+      stepNumber: 0
+    }
+    const changingState = {
+      history: [
+        {
+          squares: [ null, 'X', null, null, null, null, null, null, null ]
+        }
+      ],
+      xIsNext: false,
+      stepNumber: 1
+    }
+
+    expect(component.state).toEqual(currentState);
+
+    component.setState(changingState);
+
+    expect(component.state).toEqual(changingState);
+  });
 
 });
