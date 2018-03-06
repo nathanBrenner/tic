@@ -17,3 +17,4 @@ Steps:
 7. Add xit statements for each method on all the classes. Board and Square don't need any, because they just have Inputs and Outputs. Use this time to also organize your properties and methods: sort alphabeticaly, Inputs, outputs, state properties, constructor, lifecycle hooks, methods
   - instead of using xit, you can just not add the callback param
 
+https://jasmine.github.io/2.0/introduction.html
